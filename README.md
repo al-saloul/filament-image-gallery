@@ -3,7 +3,14 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/al-saloul/filament-image-gallery.svg?style=flat-square)](https://packagist.org/packages/al-saloul/filament-image-gallery)
 [![Total Downloads](https://img.shields.io/packagist/dt/al-saloul/filament-image-gallery.svg?style=flat-square)](https://packagist.org/packages/al-saloul/filament-image-gallery)
 
-A Filament 3 plugin for displaying image galleries with zoom, rotate, flip, and fullscreen capabilities using [Viewer.js](https://fengyuanchen.github.io/viewerjs/).
+A Filament plugin for displaying image galleries with zoom, rotate, flip, and fullscreen capabilities using [Viewer.js](https://fengyuanchen.github.io/viewerjs/).
+
+## Requirements
+
+| Version | Filament | PHP | Laravel |
+|---------|----------|-----|---------|
+| 2.x | 3.x \| 4.x | ^8.2 | ^10.0 \| ^11.0 \| ^12.0 |
+| 1.x | 3.x | ^8.1 | ^10.0 \| ^11.0 |
 
 ## Features
 
@@ -157,6 +164,15 @@ $images = [['image' => 'https://example.com/image1.jpg']];
 // Eloquent collection with 'image' attribute
 $images = $trip->images;
 ```
+
+## Upgrading
+
+### From 1.x to 2.x
+
+Version 2.x adds support for Filament v4 while maintaining backward compatibility with v3:
+
+- PHP requirement updated to `^8.2`
+- No breaking changes in API
 
 ## Changelog
 
