@@ -5,6 +5,20 @@
 
 A Filament plugin for displaying image galleries with zoom, rotate, flip, and fullscreen capabilities using [Viewer.js](https://fengyuanchen.github.io/viewerjs/).
 
+## Screenshots
+
+### Table Column
+| Thumbnails | Gallery Viewer |
+|:----------:|:--------------:|
+| ![Table Column - Thumbnails](assets/onClickTable.jpg) | ![Table Column - Gallery Viewer](assets/aferClickTable.png) |
+
+### Infolist Entry
+| Thumbnails | Gallery Viewer |
+|:----------:|:--------------:|
+| ![Infolist Entry - Thumbnails](assets/onClickInfolist.jpg) | ![Infolist Entry - Gallery Viewer](assets/aferClicknfolist.png) |
+
+---
+
 ## Requirements
 
 | Version | Filament | PHP | Laravel |
