@@ -2,6 +2,11 @@
 
 All notable changes to `filament-image-gallery` will be documented in this file.
 
+## v2.1.3 - 2025-12-16
+
+### Changed
+- Renamed `circle()` to `circular()`
+
 ## v2.1.0 - 2025-12-13
 
 ### Added
