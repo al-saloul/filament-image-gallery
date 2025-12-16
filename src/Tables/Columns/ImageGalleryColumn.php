@@ -22,7 +22,7 @@ class ImageGalleryColumn extends Column
 
     protected bool | Closure $isSquare = false;
 
-    protected bool | Closure $isCircle = false;
+    protected bool | Closure $isCircular = false;
 
     protected int | Closure $ringWidth = 1;
 
@@ -115,22 +115,22 @@ class ImageGalleryColumn extends Column
         return $this->evaluate($this->isSquare);
     }
 
-    public function circle(bool | Closure $condition = true): static
+    public function circular(bool | Closure $condition = true): static
     {
-        $this->isCircle = $condition;
+        $this->isCircular = $condition;
 
         return $this;
     }
 
-    public function isCircle(): bool
+    public function isCircular(): bool
     {
-        return $this->evaluate($this->isCircle);
+        return $this->evaluate($this->isCircular);
     }
 
     public function ring(int | Closure $width = 2, string | Closure | null $color = null): static
     {
         $this->ringWidth = $width;
-        
+
         if ($color !== null) {
             $this->ringColor = $color;
         }
@@ -219,7 +219,7 @@ class ImageGalleryColumn extends Column
 
         return collect($state)->map(function ($item) use ($disk, $visibility) {
             $path = null;
-            
+
             if (is_string($item)) {
                 $path = $item;
             } elseif (is_array($item)) {
@@ -241,11 +241,11 @@ class ImageGalleryColumn extends Column
             if ($disk) {
                 /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
                 $storage = Storage::disk($disk);
-                
+
                 if ($visibility === 'private') {
                     return $storage->temporaryUrl($path, now()->addMinutes(5));
                 }
-                
+
                 return $storage->url($path);
             }
 

@@ -8,13 +8,13 @@
     $isStacked = $isStacked();
     $stackedOverlap = $getStackedOverlap();
     $isSquare = $isSquare();
-    $isCircle = $isCircle();
+    $isCircular = $isCircular();
     $ringWidth = $getRingWidth();
     $ringColor = $getRingColor();
     $galleryId = 'gallery-col-' . str_replace(['{', '}', '-'], '', (string) \Illuminate\Support\Str::uuid());
     
     // Determine border radius class
-    if ($isCircle) {
+    if ($isCircular) {
         $borderRadiusClass = 'rounded-full';
     } elseif ($isSquare) {
         $borderRadiusClass = 'rounded-lg';

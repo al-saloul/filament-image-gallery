@@ -88,7 +88,7 @@ use Alsaloul\ImageGallery\Tables\Columns\ImageGalleryColumn;
 ImageGalleryColumn::make('images')
     ->getStateUsing(fn ($record) => $record->images->pluck('image')->toArray())
     ->disk(config('filesystems.default'))
-    ->circle()
+    ->circular()
     ->stacked(3)
     ->ring(2, '#3b82f6')
     ->limit(3)
@@ -106,7 +106,7 @@ ImageGalleryColumn::make('images')
 | `limit(int\|null)` | Maximum images to show | `3` |
 | `stacked(int\|bool)` | Stack thumbnails. Pass `int` for custom spacing | `false` |
 | `square(bool)` | Square shape with rounded corners | `false` |
-| `circle(bool)` | Circular shape | `false` |
+| `circular(bool)` | Circular shape | `false` |
 | `ring(int, string)` | Border ring with width and color | `1, null` |
 | `ringColor(string)` | Set ring color separately | `null` |
 | `limitedRemainingText(bool)` | Show "+N" badge for remaining | `true` |
@@ -159,7 +159,7 @@ ImageGalleryEntry::make('images')
 ```php
 ImageGalleryColumn::make('images')
     ->disk('s3')
-    ->circle()
+    ->circular()
     ->stacked(3)
     ->limit(3)
 
@@ -173,7 +173,7 @@ ImageGalleryColumn::make('images')
 ### Circular Stacked with Ring
 ```php
 ImageGalleryColumn::make('images')
-    ->circle()
+    ->circular()
     ->stacked(3)
     ->ring(2, '#3b82f6')
     ->limit(3)
