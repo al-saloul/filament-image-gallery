@@ -103,6 +103,26 @@ class ImageGalleryColumn extends Column
         return $this->evaluate($this->stackedOverlap);
     }
 
+    /**
+     * Set the overlap value for stacked images.
+     * This is an alias for Filament compatibility.
+     * You can also use stacked(3) directly.
+     */
+    public function overlap(int | Closure $overlap): static
+    {
+        $this->stackedOverlap = $overlap;
+
+        return $this;
+    }
+
+    /**
+     * Alias for getStackedOverlap() to match Filament's API
+     */
+    public function getOverlap(): int
+    {
+        return $this->getStackedOverlap();
+    }
+
     public function square(bool | Closure $condition = true): static
     {
         $this->isSquare = $condition;
