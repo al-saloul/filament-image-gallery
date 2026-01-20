@@ -30,6 +30,8 @@ class ImageGalleryColumn extends Column
 
     protected bool | Closure $showRemainingText = true;
 
+    protected bool | Closure $remainingTextBadge = true;
+
     protected string | Closure $emptyText = 'No images';
 
     protected string | Closure | null $disk = null;
@@ -67,6 +69,22 @@ class ImageGalleryColumn extends Column
     public function getThumbHeight(): ?int
     {
         return $this->evaluate($this->thumbHeight);
+    }
+
+    /**
+     * Alias for thumbWidth() to match Filament's new API
+     */
+    public function imageWidth(int | Closure | null $width): static
+    {
+        return $this->thumbWidth($width);
+    }
+
+    /**
+     * Alias for thumbHeight() to match Filament's new API
+     */
+    public function imageHeight(int | Closure | null $height): static
+    {
+        return $this->thumbHeight($height);
     }
 
     public function limit(int | Closure | null $limit): static
@@ -185,6 +203,22 @@ class ImageGalleryColumn extends Column
     public function shouldShowRemainingText(): bool
     {
         return $this->evaluate($this->showRemainingText);
+    }
+
+    /**
+     * Control whether remaining text shows as badge or plain text
+     * @param bool|Closure $condition false = badge, false = plain text
+     */
+    public function remainingTextBadge(bool | Closure $condition = false): static
+    {
+        $this->remainingTextBadge = $condition;
+
+        return $this;
+    }
+
+    public function shouldShowRemainingTextBadge(): bool
+    {
+        return $this->evaluate($this->remainingTextBadge);
     }
 
     public function emptyText(string | Closure $text): static

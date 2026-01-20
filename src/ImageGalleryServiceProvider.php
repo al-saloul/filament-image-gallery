@@ -40,9 +40,29 @@ class ImageGalleryServiceProvider extends PackageServiceProvider
             return $this;
         });
 
+        // Add remainingTextBadge macro to ImageColumn
+        ImageColumn::macro('remainingTextBadge', function (bool $condition = true) {
+            /** @var ImageColumn $this */
+            $this->extraAttributes([
+                'data-remaining-text-badge' => $condition ? 'true' : 'false',
+            ], merge: true);
+
+            return $this;
+        });
+
         ImageEntry::macro('imageGallery', function () {
             /** @var ImageEntry $this */
             $this->view('image-gallery::infolists.entries.image-entry-gallery');
+
+            return $this;
+        });
+
+        // Add remainingTextBadge macro to ImageEntry
+        ImageEntry::macro('remainingTextBadge', function (bool $condition = true) {
+            /** @var ImageEntry $this */
+            $this->extraAttributes([
+                'data-remaining-text-badge' => $condition ? 'true' : 'false',
+            ], merge: true);
 
             return $this;
         });
