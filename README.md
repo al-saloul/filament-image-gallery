@@ -68,6 +68,8 @@ ImageColumn::make('images')
     ->circular()
     ->stacked()
     ->limit(3)
+    ->overlap(4)
+    ->remainingTextBadge(true)
     ->imageGallery() // Enables the gallery viewer
 ```
 
@@ -90,10 +92,12 @@ use Alsaloul\ImageGallery\Tables\Columns\ImageGalleryColumn;
 ImageGalleryColumn::make('images')
     ->getStateUsing(fn ($record) => $record->images->pluck('image')->toArray())
     ->disk(config('filesystems.default'))
+    ->visibility('private') // if private generate temporary url
     ->circular()
-    ->stacked(3)
-    ->ring(2, '#3b82f6')
+    ->stacked(2)
+    ->ring(1, '#fff')
     ->limit(3)
+    ->remainingTextBadge(true)
     ->limitedRemainingText(),
 ```
 
@@ -124,6 +128,7 @@ use Alsaloul\ImageGallery\Infolists\Entries\ImageGalleryEntry;
 
 ImageGalleryEntry::make('images')
     ->disk(config('filesystems.default'))
+    ->visibility('private') // if private generate temporary url
     ->thumbWidth(128)
     ->thumbHeight(128)
     ->imageGap('gap-4'),
