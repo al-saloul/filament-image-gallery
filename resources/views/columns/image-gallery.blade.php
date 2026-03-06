@@ -48,7 +48,7 @@
         @if ($shouldShowRemainingTextBadge())
             {{-- Badge style --}}
             <div
-                style="position: relative; margin-inline-start: -0.5rem; align-self: flex-start; margin-top: -0.3rem; z-index: 99;">
+                style="position: relative; margin-inline-start: -0.5rem; align-self: flex-start; margin-top: -0.3rem;">
                 <x-filament::badge size="sm" color="primary"
                     class="!rounded-full !aspect-square !p-0 !min-w-6 !h-6 !justify-center"
                     style="height: 26px; border-radius: 50%;">
