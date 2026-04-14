@@ -38,6 +38,8 @@ class ImageGalleryColumn extends Column
 
     protected string | Closure $visibility = 'public';
 
+    protected array | Closure $viewerOptions = [];
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -46,6 +48,17 @@ class ImageGalleryColumn extends Column
         $this->disabledClick();
     }
 
+    public function viewerOptions(array | Closure $options): static
+    {
+        $this->viewerOptions = $options;
+
+        return $this;
+    }
+
+    public function getViewerOptions(): array
+    {
+        return $this->evaluate($this->viewerOptions);
+    }
 
     public function thumbWidth(int | Closure | null $width): static
     {

@@ -26,12 +26,22 @@ class ImageGalleryServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
+        FilamentAsset::registerScriptData([
+            'GalleryViewerDefaultOptions' => config('image-gallery.viewer_options'),
+        ], $this->getAssetPackageName());
+
         // Register assets
         FilamentAsset::register(
             $this->getAssets(),
             $this->getAssetPackageName()
         );
 
+        $this->imageColumnMacro();
+        $this->imageEntryMacro();
+    }
+
+    protected function imageColumnMacro(): void
+    {
         ImageColumn::macro('imageGallery', function () {
             /** @var ImageColumn $this */
             $this->view('image-gallery::columns.image-column-gallery');
@@ -50,6 +60,18 @@ class ImageGalleryServiceProvider extends PackageServiceProvider
             return $this;
         });
 
+        ImageColumn::macro('viewerOptions', function (array $options = []) {
+            /** @var ImageEntry $this */
+            $this->extraAttributes([
+                'data-viewer-options' => $options,
+            ], merge: true);
+
+            return $this;
+        });
+    }
+
+    private function imageEntryMacro(): void
+    {
         ImageEntry::macro('imageGallery', function () {
             /** @var ImageEntry $this */
             $this->view('image-gallery::infolists.entries.image-entry-gallery');
@@ -62,6 +84,15 @@ class ImageGalleryServiceProvider extends PackageServiceProvider
             /** @var ImageEntry $this */
             $this->extraAttributes([
                 'data-remaining-text-badge' => $condition ? 'true' : 'false',
+            ], merge: true);
+
+            return $this;
+        });
+
+        ImageEntry::macro('viewerOptions', function (array $options = []) {
+            /** @var ImageEntry $this */
+            $this->extraAttributes([
+                'data-viewer-options' => $options,
             ], merge: true);
 
             return $this;

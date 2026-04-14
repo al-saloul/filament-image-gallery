@@ -31,8 +31,9 @@
 
 <x-dynamic-component :component="$getEntryWrapperView()" :entry="$entry">
     <div id="{{ $galleryId }}"
-        {{ $attributes->merge($getExtraAttributes(), escape: false)->class(['fi-in-image', 'flex items-center', 'gap-1.5' => !$isStacked]) }}
+        {{ $attributes->merge($getExtraAttributes(), escape: false)->except('data-viewer-options')->class(['fi-in-image', 'flex items-center', 'gap-1.5' => !$isStacked]) }}
         style="display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto; max-width: 100%; scrollbar-width: thin; cursor: pointer;"
+        data-viewer-options='@json($getExtraAttributes()['data-viewer-options'] ?? [])'
         data-viewer-gallery wire:ignore.self>
         @foreach ($limitedState as $index => $stateItem)
             <img src="{{ $getImageUrl($stateItem) }}"

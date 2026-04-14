@@ -28,6 +28,20 @@ class ImageGalleryEntry extends Entry
 
     protected string | Closure $visibility = 'public';
 
+    protected array | Closure $viewerOptions = [];
+
+    public function viewerOptions(array | Closure $options): static
+    {
+        $this->viewerOptions = $options;
+
+        return $this;
+    }
+
+    public function getViewerOptions(): array
+    {
+        return $this->evaluate($this->viewerOptions);
+    }
+
     public function thumbWidth(int | Closure | null $width): static
     {
         $this->thumbWidth = $width;

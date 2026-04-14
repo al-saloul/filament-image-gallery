@@ -64,29 +64,21 @@
 
     function initOne(el) {
         if (!el || el._viewer || !isViewerAvailable()) return;
-        el._viewer = new Viewer(el, {
-            toolbar: {
-                zoomIn: 1,
-                zoomOut: 1,
-                oneToOne: 1,
-                reset: 1,
-                prev: 1,
-                play: 0,
-                next: 1,
-                rotateLeft: 1,
-                rotateRight: 1,
-                flipHorizontal: 1,
-                flipVertical: 1,
-            },
-            navbar: false,
-            inline: false,
-            movable: true,
-            rotatable: true,
-            scalable: true,
-            fullscreen: true,
-            transition: true,
-            title: false,
-        });
+
+        let instanceOptions = {};
+
+        try {
+            instanceOptions = el.dataset.viewerOptions ? JSON.parse(el.dataset.viewerOptions) : {};
+        } catch (e) {
+            console.error('ImageGallery: Invalid JSON in data-viewer-options', e);
+        }
+
+        el._viewer = new Viewer(el, Object.assign(
+            {},
+            window.filamentData.GalleryViewerDefaultOptions || {},
+            window.GalleryViewerDefaultOptions || {},
+            instanceOptions
+        ));
     }
 
     function destroyOne(el) {

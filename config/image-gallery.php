@@ -34,4 +34,37 @@ return [
         'stacked' => true,
         'limit' => 3,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Viewer Options
+    |--------------------------------------------------------------------------
+    |
+    | You can change the global default options for Viewer.js
+    | @see https://github.com/fengyuanchen/viewerjs/blob/main/README.md#options
+    |
+    */
+    'viewer_options' => [
+        'toolbar' => [
+            'zoomIn' => 1,
+            'zoomOut' => 1,
+            'oneToOne' => 1,
+            'reset' => 1,
+            'prev' => 1,
+            'play' => 0,
+            'next' => 1,
+            'rotateLeft' => 1,
+            'rotateRight' => 1,
+            'flipHorizontal' => 1,
+            'flipVertical' => 1,
+        ],
+        'navbar' => false,
+        'inline' => false,
+        'movable' => true,
+        'rotatable' => true,
+        'scalable' => true,
+        'fullscreen' => true,
+        'transition' => true,
+        'title' => false,
+    ],
 ];

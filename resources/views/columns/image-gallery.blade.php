@@ -12,6 +12,7 @@
     $ringWidth = $getRingWidth();
     $ringColor = $getRingColor() ?? 'white';
     $galleryId = 'gallery-col-' . str_replace(['{', '}', '-'], '', (string) \Illuminate\Support\Str::uuid());
+    $viewerOptions = $getViewerOptions();
 
     // Determine border radius
     $borderRadius = $isCircular ? '9999px' : ($isSquare ? '0.5rem' : '0.25rem');
@@ -25,6 +26,7 @@
 
 <div id="{{ $galleryId }}"
     style="display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; align-items: center;"
+    data-viewer-options='@json($viewerOptions)'
     data-viewer-gallery wire:ignore.self>
     @foreach ($visibleUrls as $index => $src)
         <img src="{{ $src }}" loading="lazy" class="object-cover object-center shrink-0"
